@@ -6,5 +6,7 @@
 	</settings>
 
 	<typeAliases>
+		<typeAlias type="com.beidou.bean.UserInfo" alias="userInfo" />
 	</typeAliases>
+
 </configuration>

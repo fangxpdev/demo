@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 本文档由TotalBuilder自动生成 dao不使用接口 -->
+<mapper namespace="com.beidou.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="userInfo">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="addr" property="addr"/>
+        <result column="birthday" property="birthday"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+   id,
+   name,
+   age,
+   phone,
+   addr,
+   birthday
+ </sql>
+
+
+    <insert id="saveUser" parameterType="userInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into user (<include refid="Base_Column_List"/>)
+        VALUES (
+        #{id},#{name},#{age},#{phone},#{addr},#{birthday}
+        )
+    </insert>
+
+    <update id="updateUser" parameterType="userInfo">
+  update user set name=#{name},
+  age=#{age},
+  phone=#{phone},
+  addr=#{addr},
+  birthday=#{birthday}
+  where id = #{id}
+ </update>
+
+    <select id="queryUser" parameterType="com.beidou.bean.UserRequest" resultMap="BaseResultMap">
+        select * from user
+        <where>
+            <if test="age!=null">
+                age = #{age}
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday}
+            </if>
+        </where>
+    </select>
+
+</mapper>

@@ -67,7 +67,7 @@
 
 	<!-- myBatis文件 -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="configLocation" value="classpath:META-INF/mybatis/tbx-manager-biz-configuration.xml" />
+		<property name="configLocation" value="classpath:META-INF/mybatis/demo-configuration.xml" />
 		<property name="mapperLocations" value="classpath*:META-INF/mybatis/mapper/*.xml" />
 		<property name="dataSource" ref="dataSource" />
 	</bean>
@@ -84,6 +84,10 @@
 		<property name="name" value="tbjTransaction"/>
 		<property name="timeout" value="30"/>
 		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.beidou.dao" />
 	</bean>
 
 </beans>
